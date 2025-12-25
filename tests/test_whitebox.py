@@ -8,7 +8,23 @@ MODEL_DIR = BASE_DIR / "models"
 vectorizer = joblib.load(MODEL_DIR / "vectorizer.pkl")
 model = joblib.load(MODEL_DIR / "logreg.pkl")
 
+def test_predict_text_output_shape():
+    proba = predict_text(
+        "This is a test sentence.",
+        vectorizer,
+        model
+    )
+    assert proba.shape == (2,)
 
+
+def test_predict_text_probability_sum():
+    proba = predict_text(
+        "Human written academic paragraph.",
+        vectorizer,
+        model
+    )
+    assert np.isclose(proba.sum(), 1.0)
+    
 def test_vectorizer_output_shape():
     text = "This is a test sentence."
     X = vectorizer.transform([text])
