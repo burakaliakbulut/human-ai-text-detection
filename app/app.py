@@ -1,3 +1,4 @@
+from pathlib import Path
 import streamlit as st
 import joblib
 import numpy as np
@@ -15,14 +16,18 @@ st.set_page_config(
 st.title("Human or AI ")
 st.write("Metnin insan mı yoksa yapay zekâ tarafından mı yazıldığını tahmin eder.")
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_DIR = BASE_DIR / "models"
+
 # Modelleri yükle
-vectorizer = joblib.load(r"D:\Masaüstü\human_ai\models\vectorizer.pkl")
+vectorizer = joblib.load(MODEL_DIR / "vectorizer.pkl")
+model = joblib.load(MODEL_DIR / "logreg.pkl")
 
 models = {
     
-    "Linear SVM(Önerilir)": joblib.load(r"D:\Masaüstü\human_ai\models\svm.pkl"),
-    "Logistic Regression": joblib.load(r"D:\Masaüstü\human_ai\models\logreg.pkl"),
-    "Random Forest": joblib.load(r"D:\Masaüstü\human_ai\models\rf.pkl")
+    "Linear SVM(Önerilir)": joblib.load(MODEL_DIR / "svm.pkl"),
+    "Logistic Regression": joblib.load(MODEL_DIR / "logreg.pkl"),
+    "Random Forest": joblib.load(MODEL_DIR / "rf.pkl")
 }
 
 label_map = {0: "Human", 1: "AI"}

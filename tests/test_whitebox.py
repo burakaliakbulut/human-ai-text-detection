@@ -1,8 +1,12 @@
+from pathlib import Path
 import joblib
 import numpy as np
 
-vectorizer = joblib.load(r"D:\Masaüstü\human_ai\models\vectorizer.pkl")
-model = joblib.load(r"D:\Masaüstü\human_ai\models\logreg.pkl")
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_DIR = BASE_DIR / "models"
+
+vectorizer = joblib.load(MODEL_DIR / "vectorizer.pkl")
+model = joblib.load(MODEL_DIR / "logreg.pkl")
 
 
 def test_vectorizer_output_shape():
