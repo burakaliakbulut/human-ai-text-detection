@@ -17,7 +17,7 @@ def test_predict_text_output_shape():
         vectorizer,
         model
     )
-    assert proba.shape == (2,0)
+    assert proba.shape == (2,)
 
 
 
