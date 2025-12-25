@@ -22,7 +22,12 @@ jobs:
           command: |
             pytest --cov=app --cov-report=xml
 
-      - sonarcloud/scan
+      - sonarcloud/scan:
+          arguments: >
+            -Dsonar.projectKey=burakaliakbulut_human-ai-text-detection2
+            -Dsonar.organization=burakaliakbulut
+            -Dsonar.python.coverage.reportPaths=coverage.xml
+
 
 workflows:
   main:
