@@ -18,9 +18,11 @@ jobs:
             pip install pytest pytest-cov
 
       - run:
-          name: Run tests with coverage
-          command: |
-            pytest --cov=app --cov-report=xml
+    name: Run tests with coverage
+    command: |
+      export PYTHONPATH=.
+      python -m pytest --cov=app --cov-report=xml --cov-config=.coveragerc
+
 
       - sonarcloud/scan
 
