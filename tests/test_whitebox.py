@@ -17,19 +17,10 @@ def test_predict_text_output_shape():
         vectorizer,
         model
     )
-    assert proba.shape == (2,)
+    assert proba.shape == (2,0)
 
-<<<<<<< HEAD
-def test_predict_text_output_shape():
-    proba = predict_text(
-        "This is a test sentence.",
-        vectorizer,
-        model
-    )
-    assert proba.shape == (2,)
 
-=======
->>>>>>> 06746461549353012634c198f6b5c8fb8a12b308
+
 
 def test_predict_text_probability_sum():
     proba = predict_text(
@@ -38,11 +29,8 @@ def test_predict_text_probability_sum():
         model
     )
     assert np.isclose(proba.sum(), 1.0)
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 06746461549353012634c198f6b5c8fb8a12b308
+
 def test_vectorizer_output_shape():
     text = "This is a test sentence."
     X = vectorizer.transform([text])
