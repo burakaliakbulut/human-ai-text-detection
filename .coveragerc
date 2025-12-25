@@ -1,6 +1,6 @@
 [run]
-source = app
+source = app.py
 
 [report]
 omit =
-    app/app.py
+    app.py
